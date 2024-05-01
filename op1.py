@@ -5,7 +5,7 @@ context = zmq.Context()
 socket = context.socket(zmq.SUB)
 socket.connect("tcp://127.0.0.1:10100")
 print("Suscribiendo")
-socket.subscribe("")
+socket.subscribe("numOp1")
 print("Suscrito, esperando mensajes")
 
 while True: 
