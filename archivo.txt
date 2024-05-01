@@ -1,0 +1,13 @@
+problema : convertir el json en string
+- puedo acceder al elemento de la lista con su indice
+- sobreescribir un elemento de la lista
+- inicializar una lista
+- decodificar bytes a string
+- decodificar un string  en  formato json a un objeto de py
+entrada: [b'NumerosOperar', b'{"A": "1", "B": "2", "C": "3", "D":4}']
+1. acceder al segundo elemento de la lista con su indice [1]
+Resultado: b'{"A": "1", "B": "2", "C": "3", "D":4}'
+2. decodificar bytes a string
+Resultado: '{"A": "1", "B": "2", "C": "3", "D":4}'
+
+salida:  '{"A": "1", "B": "2", "C": "3", "D":4}'  
