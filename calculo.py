@@ -3,14 +3,12 @@ import json
 import time
 
 def conectOp1(num):
-    context = zmq.context()
     socketOp1 = context.socket(zmq.PUB)
     socketOp1.connect("tcp://127.0.0.1:10000")
     socketOp1.send_string("numOp1", flags=zmq.SNDMORE)
     socketOp1.send_json(num)
 
 def conectOp2(num):
-    context = zmq.context()
     socketOp2 = context.socket(zmq.PUB)
     socketOp2.connect("tcp://127.0.0.1:10000")
     socketOp2.send_string("numOp2", flags=zmq.SNDMORE)
