@@ -28,13 +28,22 @@ def conectOp1(num):
     socketOp1.send_string("numOp1", flags=zmq.SNDMORE)
     socketOp1.send_json(num)
     resultadoOp1 = suscriOp1.recv_multipart()
-    print("El resultado de la suma es: ", resultadoOp1)    
+    print("El resultado de la suma es: ", resultadoOp1)
+    resultadoOp1 = resultadoOp1[1]
+    resultadoOp1.decode("utf-8")
+    resultadoOp1 = int(resultadoOp1)
+    return resultadoOp1
+    
 
 def conectOp2(num):
     socketOp2.send_string("numOp2", flags=zmq.SNDMORE)
     socketOp2.send_json(num)
     resultadoOp2 = suscriOp2.recv_multipart()
     print("Eol resultado de la suma es: ", resultadoOp2)
+    resultadoOp2 = resultadoOp2[1]
+    resultadoOp2.decode("utf-8")
+    resultadoOp2 = int(resultadoOp2)
+    return resultadoOp2
 
 while True: 
     resultado = socket.recv_multipart() 
