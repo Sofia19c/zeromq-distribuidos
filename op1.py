@@ -20,6 +20,6 @@ while True:
     decodificado = elementoLista
     objeto = json.loads(decodificado)
     sum = objeto["A"] + objeto["B"]
-
+    sum = str(sum)
     socketDos.send_string("ResOp1", flags= zmq.SNDMORE)
     socketDos.send_string(sum)
