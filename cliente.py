@@ -38,6 +38,6 @@ resultado = resultado[1]
 resultado.decode()
 resultado = int(resultado)
 print("El resultado final es: ", resultado)
-context.term()
+
 
 
