@@ -8,6 +8,9 @@ print("Suscribiendo")
 socket.subscribe("numOp1")
 print("Suscrito, esperando mensajes")
 
+socketDos = context.socket(zmq.PUB)
+socketDos.connect("tcp://127.0.0.1:10000")
+
 while True: 
     resultado = socket.recv_multipart() 
     print("El resultado es: ", resultado)
@@ -16,4 +19,7 @@ while True:
     elementoLista.decode("utf-8")
     decodificado = elementoLista
     objeto = json.loads(decodificado)
-    
+    sum = objeto["A"] + objeto["B"]
+
+    socketDos.send_string("ResOp1", flags= zmq.SNDMORE)
+    socketDos.send_string(sum)
