@@ -39,7 +39,7 @@ def conectOp2(num):
     socketOp2.send_string("numOp2", flags=zmq.SNDMORE)
     socketOp2.send_json(num)
     resultadoOp2 = suscriOp2.recv_multipart()
-    print("Eol resultado de la suma es: ", resultadoOp2)
+    print("El resultado de la resta es: ", resultadoOp2)
     resultadoOp2 = resultadoOp2[1]
     resultadoOp2.decode("utf-8")
     resultadoOp2 = int(resultadoOp2)
