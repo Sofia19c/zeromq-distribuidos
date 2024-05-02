@@ -16,13 +16,25 @@ socketOp1.connect("tcp://127.0.0.1:10000")
 socketOp2 = context.socket(zmq.PUB)
 socketOp2.connect("tcp://127.0.0.1:10000")
 
+suscriOp1 = context.socket(zmq.SUB)
+suscriOp1.connect("tcp://127.0.0.1:10100")
+suscriOp1.subscribe("ResOp1")
+
+suscriOp2 = context.socket(zmq.SUB)
+suscriOp2.connect("tcp://127.0.0.1:10100")
+suscriOp2.subscribe("ResOp2")
+
 def conectOp1(num):
     socketOp1.send_string("numOp1", flags=zmq.SNDMORE)
-    socketOp1.send_json(num)    
+    socketOp1.send_json(num)
+    resultadoOp1 = suscriOp1.recv_multipart()
+    print("El resultado de la suma es: ", resultadoOp1)    
 
 def conectOp2(num):
     socketOp2.send_string("numOp2", flags=zmq.SNDMORE)
     socketOp2.send_json(num)
+    resultadoOp2 = suscriOp2.recv_multipart()
+    print("Eol resultado de la suma es: ". resultadoOp2)
 
 while True: 
     resultado = socket.recv_multipart() 
