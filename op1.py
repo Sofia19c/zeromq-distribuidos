@@ -13,7 +13,7 @@ socketDos.connect("tcp://127.0.0.1:10000")
 
 while True: 
     resultado = socket.recv_multipart() 
-    print("El resultado es: ", resultado)
+    print("Recibí: ", resultado)
     print("Recibi el mensaje")
     elementoLista = resultado[1]
     elementoLista.decode("utf-8")
@@ -21,5 +21,6 @@ while True:
     objeto = json.loads(decodificado)
     sum = objeto["A"] + objeto["B"]
     sum = str(sum)
+    print("El resultado de la suma es:", sum)
     socketDos.send_string("ResOp1", flags= zmq.SNDMORE)
     socketDos.send_string(sum)
